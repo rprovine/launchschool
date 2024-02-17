@@ -1,3 +1,11 @@
+"""
+Calculator program that takes two numbers 
+and an operation and performs the operation
+on the two numbers.
+"""
+
+
+
 # Ask the user for the first number
 # Ask the user for the second number
 # Ask the user for the operation
@@ -10,7 +18,7 @@ print('Enter the first number:')
 number1 = input()
 print('Enter the second number:')
 number2 = input()
-print('What operation would you llike to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide')
+print('What operation would you llike to perform?\n 1) Add 2) Subtract 3) Multiply 4) Divide')
 operation = input()
 
 if operation == '1':
@@ -21,5 +29,5 @@ elif operation == '3':
     output = int(number1) * int(number2)
 elif operation == '4':
     output = int(number1) / int(number2)
-    
-print(f'The result is {output}')
+
+print(f'The result is {output}/n')
