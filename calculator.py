@@ -37,7 +37,8 @@ while invalid_number(number2):
     prompt('Invalid number. Please enter a valid number:')
     number2 = input()
     
-prompt('What operation would you llike to perform?\n 1) Add 2) Subtract 3) Multiply 4) Divide')
+prompt("""What operation would you like to 
+perform? 1) Add 2) Subtract 3) Multiply 4) Divide""")
 operation = input()
 
 while operation not in ['1', '2', '3', '4']:
