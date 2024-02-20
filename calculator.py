@@ -1,59 +1,69 @@
-"""
-Calculator program that takes two numbers 
-and an operation and performs the operation
-on the two numbers.
-"""
+import json
+
 def prompt(message):
-    print(f'=> {message}')
-    
+    print(f"==> {message}")
+
 def invalid_number(number_str):
     try:
-        int(number_str)
+        float(number_str)
     except ValueError:
         return True
-    
     return False
 
+def messages(message, lang='en'):
+    return MESSAGES[lang][message]
 
-# Ask the user for the first number
-# Ask the user for the second number
-# Ask the user for the operation
-# Perform the operation
-# Print the result
+with open('calculator_messages.json', 'r') as file:
+    MESSAGES = json.load(file)
 
-prompt('Welcome to the calculator!')
+print(messages('welcome'))
 
-prompt('Enter the first number:')
-number1 = input()
+while True:
+    while True:
+        prompt(messages('number_prompt_1'))
+        number1 = input()
 
-while invalid_number(number1):
-    prompt('Invalid number. Please enter a valid number:')
-    number1 = input()
-    
-prompt('Enter the second number:')
-number2 = input()
+        if not invalid_number(number1):
+            break
 
-while invalid_number(number2):
-    prompt('Invalid number. Please enter a valid number:')
-    number2 = input()
-    
-prompt("""What operation would you like to 
-perform? 1) Add 2) Subtract 3) Multiply 4) Divide""")
-operation = input()
+        prompt(messages('invalid_number'))
 
-while operation not in ['1', '2', '3', '4']:
-    prompt('Invalid operation. You must choose 1, 2, 3, or 4:')
-    operation = input()
+    while True:
+        prompt(messages('number_prompt_2'))
+        number2 = input()
 
-match operation:
-    case '1':
-        output = int(number1) + int(number2)
-    case '2':
-        output = int(number1) - int(number2)
-    case '3':
-        output = int(number1) * int(number2)
-    case '4':
-        output = int(number1) / int(number2)
-    
+        if not invalid_number(number2):
+            break
 
-prompt(f'The result is {output}')
+        prompt(messages('invalid_number'))
+
+    while True:
+        prompt(messages('operation_prompt'))
+        operation = input()
+
+        if operation in ["1", "2", "3", "4"]:
+            break
+
+        prompt(messages('invalid_operation'))
+
+    match operation:
+        case "1":
+            output = float(number1) + float(number2)
+        case "2":
+            output = float(number1) - float(number2)
+        case "3":
+            output = float(number1) * float(number2)
+        case "4":
+            if float(number2) == 0:
+                prompt(messages('division_by_zero'))
+                exit(1)
+            output = float(number1) / float(number2)
+
+    output = round(output, 2)  # Round the result to two decimals
+
+    prompt(messages('result').format(output=output))
+
+    prompt(messages('another_operation'))
+    answer = input()
+    if answer[0].lower() != 'y':
+        break
