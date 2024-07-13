@@ -1,6 +1,7 @@
 def prompt(message):
     print(f"==> {message}")
 
+
 def invalid_number(number_str):
     try:
         number = float(number_str)
@@ -10,6 +11,7 @@ def invalid_number(number_str):
         return True
 
     return False
+
 
 prompt("Welcome to Mortgage Calculator!")
 
@@ -45,7 +47,7 @@ while True:
     loan_amount = float(amount)
 
     monthly_payment = loan_amount * (
-        monthly_interest_rate /
+            monthly_interest_rate /
             (1 - (1 + monthly_interest_rate) ** (-months))
     )
 
