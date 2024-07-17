@@ -1,0 +1,9 @@
+import random
+a = 2
+b = random.randint(0,1)
+a *= b
+
+if a = 2:
+    print('Two')
+else:
+    print('Not Two')
