@@ -1,0 +1,16 @@
+{
+  "name": "lesson2",
+  "version": "1.0.0",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "eslint": "^9.7.0",
+    "readline-sync": "^1.4.10"
+  }
+}
